@@ -15,7 +15,6 @@ const greeting = (word) => {
 
 const speaker = (message, callback) => {
   // Solution code here...
-  // greeting(message);
   return callback(message);
 }
 
@@ -103,36 +102,10 @@ This anonymous function should accept up to three arguments: the element, the in
 const removeWithAnon = (arr) => {
   // Solution code here...
   arr.forEach(function(num, index, arr) {
-    for(let i = 0; i < arr.length; i++) {
-      // let remainder = num % 3;
-      let remainder = arr[i] % 3;
-      if( remainder === 2 ) {
-        arr.pop();
-      }
-    }
+    removeOne(num, arr);
   });
   return arr;
 }
-
-/*
-const removeOne = (num, arr) => {
-  // Solution code here...
-  let remainder = num % 3;
-  if( remainder === 2 ) {
-    arr.pop();
-  }
-}
-
-const removeElements = (arr, callback) => {
-  // Solution code here...
-  for(let i = 0; i < arr.length; i++) {
-    callback(arr[i], arr);
-  }
-  return arr;
-}
-
-*/
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -196,9 +169,7 @@ const fizzbuzz = (arr) => {
       outputArray.push("Fizz");
     } else if (divBy5) {
       outputArray.push("Buzz");
-    }
-    
-    if (!divBy3 && !divBy5) {
+    } else {
       outputArray.push(element);
     }
 
