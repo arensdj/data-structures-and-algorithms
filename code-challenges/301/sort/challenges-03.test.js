@@ -143,7 +143,7 @@ const sortPeople = (arr) => {
       return 0;
     }
   });
-  
+ 
   return arr;
 };
 
