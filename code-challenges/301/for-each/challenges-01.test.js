@@ -133,7 +133,7 @@ const createList = (availableItems) => {
     }
   });
   return groceryList;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
@@ -152,33 +152,23 @@ Return the resulting output array.
 const fizzbuzz = (arr) => {
   // Solution code here...
   let outputArray = [];
-  let divBy3 = false;
-  let divBy5 = false;
-  arr.forEach(function(element) {
-    if( (element % 3) === 0 ) {
-      divBy3 = true;
-    } 
+  
+  arr.forEach((element) => {
     
-    if( (element % 5) === 0 ) {
-      divBy5 = true;
-    } 
-
-    if(divBy3 && divBy5) {
+    if( (element % 3 === 0 ) && (element % 5 === 0) ) {
       outputArray.push("Fizz Buzz");
-    } else if (divBy3) {
+    } else if ( element % 3 === 0 ) {
       outputArray.push("Fizz");
-    } else if (divBy5) {
+    } else if (element % 5 === 0 ) {
       outputArray.push("Buzz");
     } else {
       outputArray.push(element);
     }
 
-    divBy3 = false;
-    divBy5 = false;
   });
 
   return outputArray;
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
