@@ -83,23 +83,16 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  let ingred = [];
-  let tmp = [];
-  // console.log(recipe.ingredients);
-  ingred = recipe.ingredients;
   
-  for( let i = 0; i < ingred.length; i++) {
-    tmp.push(ingred[i].slice(2,3));
-    // result.push(tmp.slice(2,3));
-    // console.log(ingred[i].slice(2, 3));
-  }
-  
+  let ingredientRE = /(\d+)\s+(\S+)\s(.+$)/;
+  for( let i = 0; i < recipe.ingredients.length; i++) {
+    recipe.ingredients[i].search(ingredientRE);
+    result.push(RegExp.$3);
+  }  
 
   return result; 
 };
 
-
-// let array = [];
 listFoods(gruffaloCrumble);
 
 
@@ -113,28 +106,18 @@ You may also use other string or array methods.
 
 const splitFoods = (recipe) => {
   let result = [];
-  // Solution code here...
-  let ingred = [];
-  let tmp = [];
-  // console.log(recipe.ingredients);
-  ingred = recipe.ingredients;
-  // console.log(ingred);
-  for( let i = 0; i < ingred.length; i++) {
-    tmp.push(ingred[i].split(' '));
-  }
-    
-  // console.log(tmp);
+  let matched = [];
   let words = [];
-  let name;
-  tmp.forEach(item => {
-    words = item.slice(2);
-    words.forEach(word => {
-      name += word + ' ';
-    });
-    // result.push(item.slice(2));
-    result.push(name);
-  })
-  // console.log(result);
+  let wordsRE = /(\d+)\s+(\S+)\s+(.+)$/;
+  for( let i = 0; i < recipe.ingredients.length; i++) {
+    matched = wordsRE.exec(recipe.ingredients[i]);
+    words = matched.slice(3);
+    let ingredient = "";
+    for( let j = 0; j < words.length; j++) {
+      ingredient += words[j];
+    }
+    result.push(ingredient);
+  }
   return result; 
 };
 
@@ -154,11 +137,24 @@ const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
   let steps = recipe.steps;
+  let item = [];
   steps.forEach(step => {
-    result.push(step[0]);
+    item.push(step.split(' '));
   });
+
+  let tempResult = [];
+  item.forEach(step => {
+    tempResult.push(step.slice(0, 1));
+  })
+  
+  for(var i = 0; i < tempResult.length; i++) {
+    result.push(tempResult[i][0]);
+  }
+
   return result;
 };
+
+stepActions(gruffaloCrumble);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -175,6 +171,13 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  let result = [];
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] % 2 === 0) {
+      arr.splice(i, 1);
+    }
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -194,6 +197,18 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  // let stringLength = str.length;
+  let result = [];
+  let startingIndex = 0;
+  if ( numberOfCharacters > str.length ) {
+    return result;
+  } else if ( numberOfCharacters < 0) {
+    return str;
+  } else {
+    startingIndex = str.length - numberOfCharacters;
+    str.splice(startingIndex, numberOfCharacters);
+    return str;
+  }  
 };
 
 
