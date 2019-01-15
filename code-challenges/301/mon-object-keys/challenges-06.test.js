@@ -123,14 +123,15 @@ hasChildrenValues(characters, 'Eddard') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].name === character) {
-      if (arr[i].children.length > 0) {
-        return true;
-      }
-    }
+  // let element;
+  let charObj = arr.find( char => char.name === character);
+
+  let charArray = Object.values(charObj)[2];
+  if (charArray.length > 0) {
+    return true;
+  } else {
+    return false;
   }
-  return false;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -143,11 +144,24 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].name === character) {
-      
-    }
+
+  let charObj = arr.find( char => char.name === character);
+ 
+  let charArray = Object.entries(charObj)[2];
+  if (charArray.length > 0) {
+    return true;
+  } else {
+    return false;
   }
+
+  // arr.forEach(element => {
+  //   if (Object.entries(arr.name) === character) {
+  //     if (Object.entries(arr.name.children.length) > 0) {
+  //       return true;
+  //     }
+  //   }
+  // });
+  // return false;
 }
 
 /* ------------------------------------------------------------------------------------------------
