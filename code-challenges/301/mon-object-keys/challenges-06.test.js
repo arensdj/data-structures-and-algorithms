@@ -145,13 +145,24 @@ The input and output of this function are the same as the input and output from 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
 
-  let charObj = arr.find( char => char.name === character);
+  // let charObj = arr.find( char => char.name === character);
  
-  let charArray = Object.entries(charObj)[2];
-  if (charArray.length > 0) {
-    return true;
-  } else {
-    return false;
+  // let charArray = Object.entries(charObj)[2];
+  // if (charArray.length > 0) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+
+  const entries = Object.entries(arr);
+  for (let i = 0; i < arr.length; i++) {
+    if (entries[i][1].name === character) {
+      if( entries [i][1].children.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 }
 
