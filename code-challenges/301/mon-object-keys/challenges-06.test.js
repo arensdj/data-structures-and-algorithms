@@ -153,15 +153,6 @@ const hasChildrenEntries = (arr, character) => {
   } else {
     return false;
   }
-
-  // arr.forEach(element => {
-  //   if (Object.entries(arr.name) === character) {
-  //     if (Object.entries(arr.name.children.length) > 0) {
-  //       return true;
-  //     }
-  //   }
-  // });
-  // return false;
 }
 
 /* ------------------------------------------------------------------------------------------------
