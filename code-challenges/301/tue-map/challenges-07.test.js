@@ -195,6 +195,7 @@ const extractStats = (arr) => {
     return { name: val.stat.name, total: val.effort + val.baseStat };
   });
   return result;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
