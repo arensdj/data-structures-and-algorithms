@@ -171,12 +171,13 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
-  let result = [];
+  // let result = [];
   for(let i = 0; i < arr.length; i++) {
-    if(arr[i] % 2 === 0) {
+    if(! (arr[i] % 2)) {
       arr.splice(i, 1);
     }
   }
+  console.log(arr);
   return arr;
 };
 
@@ -249,6 +250,15 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
   // Solution code here...
+  let result = [];
+  let regexVowels = /[aeiou]/gmi;
+  let noVowels = (str.split(regexVowels)).join('');
+  let vowels = (str.match(regexVowels)).sort();
+
+  vowels = vowels.join('');
+  result.push(noVowels);
+  result.push(vowels);
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
