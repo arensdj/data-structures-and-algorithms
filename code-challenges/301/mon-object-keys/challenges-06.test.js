@@ -123,7 +123,7 @@ hasChildrenValues(characters, 'Eddard') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-  // let element;
+  let element;
   let charObj = arr.find( char => char.name === character);
 
   let charArray = Object.values(charObj)[2];
@@ -132,6 +132,19 @@ const hasChildrenValues = (arr, character) => {
   } else {
     return false;
   }
+
+  // const entries = Object.values(arr);
+  // for (let i = 0; i < arr.length; i++) {
+  //   if (entries[i][1].name === character) {
+  //     //return entries[i][1].children.length > 0 ? true : false;
+  //     if( entries [i][1].children.length > 0) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  // }
+
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -157,6 +170,7 @@ const hasChildrenEntries = (arr, character) => {
   const entries = Object.entries(arr);
   for (let i = 0; i < arr.length; i++) {
     if (entries[i][1].name === character) {
+      //return entries[i][1].children.length > 0 ? true : false;
       if( entries [i][1].children.length > 0) {
         return true;
       } else {
