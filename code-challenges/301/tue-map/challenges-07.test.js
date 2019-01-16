@@ -80,15 +80,17 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 
 const evenOdd = (arr) => {
   // Solution code here...
-  let number = 0;
-  let result = [];
-  for( let i = 0; i < arr.length; i++) {
-    if ( number % 2 === 0) {
-      result.push('even');
+  const theMap = arr.map( x => {
+    if( isNaN(x) ) {
+      return 'N/A';
+    } else if ( (x % 2) === 0 ) {
+      return 'even';
     } else {
-      result.push('odd');
+      return 'odd';
     }
-  }
+  });
+
+  return theMap;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,6 +137,13 @@ const snorlaxAbilities = {
 
 const extractAbilities = (arr) => {
   // Solution code here...
+  // let ability = ' ';
+  let result = [];
+
+  console.log(Object.values(arr).slot);
+
+  result.map(Object.values(arr)[0].name);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
