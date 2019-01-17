@@ -10,9 +10,8 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
-  let result = [];
 
-  result = arr.filter(item => !( item % 2 === 0) );
+  let result = arr.filter(item => item %2 > 0);
   
   return result;
 };
@@ -30,6 +29,10 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 const filterStringsWithVowels = (arr) => {
   // Solution code here...
+  let regex = /[aeiou]g/;
+  let result = arr.filter(str => str.match(regex) );
+
+  return result;
 };
 
 
@@ -43,6 +46,12 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+  // result = forbiddenValues.filter(num => num.match())
+
+  // let result = forbiddenValues.filter((num) => !arr.includes(num));
+  let result = arr.filter((num) => !forbiddenValues.includes(num));
+
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -86,6 +95,13 @@ const snorlaxData = {
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
   // Solution code here...
+  let result = arr.filter( value => {
+    if (value.baseStat > minBaseStat) {
+      return value.stat.name;
+    }
+  });
+
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,6 +114,15 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 
 const getStatName = (arr, minBaseStat) => {
   // Solution code here...
+  let result = arr.filter( value => {
+    if (value.baseStat > minBaseStat) {
+      return value.stat.name;
+    }
+  });
+
+  let statNames = result.map(element => element.stat.name);
+  // console.log(statNames);
+  return statNames;  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -151,6 +176,14 @@ const characters = [
 
 const getCharactersWithoutChildren = (arr) => {
   // Solution code here...
+  let result = [];
+  result = arr.filter(element => {
+    if (! element.hasOwnProperty('children') ) {
+      return element;
+    }
+  });
+
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
