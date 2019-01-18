@@ -184,6 +184,8 @@ const getCharactersWithoutChildren = (arr) => {
   });
 
   return result;
+
+  // Can do    return arr.filter(element => ! element.children);
 };
 
 /* ------------------------------------------------------------------------------------------------
