@@ -63,7 +63,7 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
-  let regex = /^[(]*[0-9]*[)]*[ -]*[0-9]*[ -]*[0-9]*/;
+  let regex = /^[(]*[0-9]*[)]*[ -]*[0-9]*[ -]*[0-9]*$/;
   return regex.test(phoneNumber);
 }
 /* ------------------------------------------------------------------------------------------------
