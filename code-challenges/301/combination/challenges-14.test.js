@@ -96,7 +96,7 @@ let starWarsData = [{
 let biggerThanLuke = (arr) => {
   // Solution code here...
 
-  let result = [];
+  // let result = [];
   let mass = parseInt(arr[0].mass);
   let names = '';
   console.log('Luke mass: ', mass);
@@ -114,7 +114,7 @@ let biggerThanLuke = (arr) => {
   })
 
   console.log('Result: ', names);
-  result.push(names);
+  // result.push(names);
   return names;
 }
 
@@ -145,7 +145,7 @@ const sortBy = (property, arr) => {
     }
   }
 
-  // return arr.sort(byPropertyFunc(property));
+  return arr.sort(byPropertyFunc(property));
 };
 
 
