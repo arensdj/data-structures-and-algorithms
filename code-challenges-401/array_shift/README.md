@@ -13,6 +13,5 @@
 # contain the input array with the input value inserted in the middle.
  
 ## Solution
-![alt text](http://array_shift.pdf)
-
+![alt text](https://github.com/arensdj/data-structures-and-algorithms/blob/master/code-challenges-401/assets/array_shift.pdf)
 <!-- Embedded whiteboard image -->
