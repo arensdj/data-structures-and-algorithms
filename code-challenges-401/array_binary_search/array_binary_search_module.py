@@ -27,6 +27,7 @@ def binary_search(arr, val):
             index = middle_index
             found = True
         else:
+            # reassign the end and start value excluding the middle index.
             if (val < arr[middle_index]):
                 end = middle_index - 1
             else:
