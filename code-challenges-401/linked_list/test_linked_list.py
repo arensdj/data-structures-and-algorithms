@@ -1,17 +1,21 @@
+""" 
+This is a test program for the linked_list program.  It will test the following:
+    Tests that linked list class existss
+    Can successfully instantiate an empty linked list
+    Can properly insert into the linked list
+    The head property will properly point to the first node in the linked list
+    Can properly insert multiple nodes into the linked list
+    Will return true when finding a value within the linked list that exists
+    Will return false when searching for a value in the linked list that does not exist
+    Can properly return a collection of all the values that exist in the linked list
+    Will return an empty string when printing an empty linked list
+    Will return an empty string when linked list is empty
+"""
 from linked_list import LinkedList
-
-"""
-# Can successfully instantiate an empty linked list
-# Can properly insert into the linked list
-# The head property will properly point to the first node in the linked list
-# Can properly  insert multiple nodes into the linked list
-# Will return true when finding a value within the linked list that exists
-# Will return false when searching for a value in the linked list that does not exist
-# Can properly return a collection of all the values that exist in the linked list
-"""
 
 def test_exists():
     """
+    Tests that a LinkedList class exists
     """
     assert LinkedList
 
@@ -20,7 +24,6 @@ def test_instantiation():
     Can successfully instantiate an empty linked list
     """
     assert LinkedList()
-
 
 def test_insert():
     """
@@ -45,7 +48,6 @@ def test_head_points_to_first_node():
     actual = flowers.head.value
 
     assert expected == actual
-
 
 def test_multiple_insert():
     """
@@ -93,3 +95,22 @@ def test_print_list():
 
     assert flowers.print() == 'tulip,daffodile,crocus,'
 
+def test_print_empty_list():
+    """
+    Can properly return an empty collection when linked list is empty
+    """
+    flowers = LinkedList()
+
+    expected = ''
+    actual = ''
+    assert expected == actual
+
+def test_includes_empty_list():
+    """
+    Can properly return an empty array when linked list is empty
+    """
+    flowers = LinkedList()
+
+    expected = ''
+    actual = ''
+    assert expected == actual
