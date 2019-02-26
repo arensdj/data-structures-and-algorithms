@@ -1,5 +1,5 @@
 """ 
-This is a test program for the linked_list program.  It will test the following:
+    This is a test program for the linked_list program.  It will test the following:
     Tests that linked list class existss
     Can successfully instantiate an empty linked list
     Can properly insert into the linked list
@@ -11,7 +11,9 @@ This is a test program for the linked_list program.  It will test the following:
     Will return an empty string when printing an empty linked list
     Will return an empty string when linked list is empty
 """
+
 from linked_list import LinkedList
+
 
 def test_exists():
     """
@@ -19,11 +21,13 @@ def test_exists():
     """
     assert LinkedList
 
+
 def test_instantiation():
     """
     Can successfully instantiate an empty linked list
     """
     assert LinkedList()
+
 
 def test_insert():
     """
@@ -37,6 +41,7 @@ def test_insert():
 
     assert expected == actual
 
+
 def test_head_points_to_first_node():
     """
     The head property will properly point to the first node in the linked list
@@ -49,6 +54,7 @@ def test_head_points_to_first_node():
 
     assert expected == actual
 
+
 def test_multiple_insert():
     """
     Can properly insert multiple nodes into the linked list
@@ -57,10 +63,11 @@ def test_multiple_insert():
     flowers.insert('zinnia')
     flowers.insert('lavender')
     flowers.insert('rose')
-    
+
     assert flowers.head.value == 'zinnia'
     assert flowers.head._next.value == 'lavender'
     assert flowers.head._next._next.value == 'rose'
+
 
 def test_includes():
     """
@@ -73,6 +80,7 @@ def test_includes():
 
     assert flowers.includes('rose')
 
+
 def test_not_includes():
     """
     Will return false when finding a value that doesn't exist in the linked list
@@ -82,7 +90,8 @@ def test_not_includes():
     flowers.insert('lavender')
     flowers.insert('rose')
 
-    assert not flowers.includes('daisy')    
+    assert not flowers.includes('daisy')
+
 
 def test_print_list():
     """
@@ -95,6 +104,7 @@ def test_print_list():
 
     assert flowers.print() == 'tulip,daffodile,crocus,'
 
+
 def test_print_empty_list():
     """
     Can properly return an empty collection when linked list is empty
@@ -105,6 +115,7 @@ def test_print_empty_list():
     actual = ''
     assert expected == actual
 
+
 def test_includes_empty_list():
     """
     Can properly return an empty array when linked list is empty
@@ -114,3 +125,29 @@ def test_includes_empty_list():
     expected = ''
     actual = ''
     assert expected == actual
+
+
+def test_append_item():
+    flowers = LinkedList()
+    flowers.insert('tulip')
+    flowers.insert('daffodile')
+    flowers.append_item('geranium')
+
+    assert flowers.head._next._next.value == 'geranium'
+
+
+def test_insert_before():
+    flowers = LinkedList()
+    flowers.insert('tulip')
+    flowers.insert('daffodile')
+    flowers.insert_before('daffodile', 'geranium')
+
+    assert flowers.head._next.value == 'geranium'
+
+def test_insert_after():
+    flowers = LinkedList()
+    flowers.insert('tulip')
+    flowers.insert('daffodile')
+    flowers.insert_after('tulip', 'pansie')
+
+    assert flowers.head._next.value == 'pansie'
