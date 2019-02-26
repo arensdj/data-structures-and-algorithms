@@ -74,6 +74,28 @@ class LinkedList():
         except StopIteration:
             print("Can't find the next object in linked list.")
 
+    def find_from_end(self, k):
+        vals = []
+        current = self.head
+
+        if not self.head:
+            return ''
+        
+        while current:
+            vals.append(current.value)
+            current = current._next
+
+        if k > len(vals):
+            print("Value k not found")
+            return ''
+        else:
+            try:
+                return vals[len(vals) - 1 - k]
+            except IndexError:
+                print("Value k not found")
+            except AssertionError:
+                print("Value k not found")
+
     def includes(self, value):
         """
         Summary of includes function:  traverses linked list searching for a value

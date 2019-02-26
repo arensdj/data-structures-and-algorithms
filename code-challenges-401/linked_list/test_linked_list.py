@@ -144,10 +144,45 @@ def test_insert_before():
 
     assert flowers.head._next.value == 'geranium'
 
-def test_insert_after():
+# def test_insert_after():
+#     flowers = LinkedList()
+#     flowers.insert('tulip')
+#     flowers.insert('daffodile')
+#     flowers.insert_after('tulip', 'pansie')
+
+#     assert flowers.head._next.value == 'pansie'
+
+def test_find_from_end():
     flowers = LinkedList()
     flowers.insert('tulip')
+    flowers.insert('rose')
+    flowers.insert('pansie')
+    flowers.insert('geranium')
     flowers.insert('daffodile')
-    flowers.insert_after('tulip', 'pansie')
 
-    assert flowers.head._next.value == 'pansie'
+    expected = 'rose'
+    actual = flowers.find_from_end(3)
+
+    assert expected == actual
+
+def test_find_from_end_empty_ll():
+    flowers = LinkedList()
+
+    expected = ''
+    actual = flowers.find_from_end(2)
+
+    assert expected == actual
+
+def test_find_from_end_value_too_large():
+    flowers = LinkedList()
+    flowers.insert('tulip')
+    flowers.insert('rose')
+    flowers.insert('pansie')
+    flowers.insert('geranium')
+    flowers.insert('daffodile')
+
+    expected = ''
+    actual = flowers.find_from_end(6)
+    print('Actual: ' + actual)
+
+    assert expected == actual
