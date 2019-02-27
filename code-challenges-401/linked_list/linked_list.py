@@ -54,10 +54,11 @@ class LinkedList():
 
     def append_item(self, new_value):
         """
-        Summary of includes function:  traverses linked list searching for a value
+        Summary of append_item function:  traverses the linked list and appends a new value after the last item in the linked list
 
         Parameters:
-        value (string): string a value used to search linked list
+        self (LinkedList): which is the current linked list object
+        new_Value (string): a string value 
 
         Returns:
         True if value found
@@ -75,6 +76,16 @@ class LinkedList():
             print("Can't find the next object in linked list.")
 
     def find_from_end(self, k):
+        """
+        Summary of find_from_end function:  traverses linked list searching for a value that
+        is k values from the end of linked list
+
+        Parameters:
+        k (string): string a value 
+
+        Returns:
+        A string value that is k from the end of the linked list
+        """
         vals = []
         current = self.head
 
@@ -93,7 +104,7 @@ class LinkedList():
                 return vals[len(vals) - 1 - k]
             except IndexError:
                 print("Value k not found")
-            except AssertionError:
+            except:
                 print("Value k not found")
 
     def includes(self, value):
@@ -123,6 +134,18 @@ class LinkedList():
         return False
 
     def insert_after(self, value, new_value):
+        """
+        Summary of insert_after function:  traverses the linked list searching for the 
+        input value and inserts a new value after that value
+
+        Parameters:
+        self (LinkedList): which is the current linked list object
+        value (string): a string value in linked list
+        new_Value (string) a string value 
+
+        Returns:
+        Nothing
+        """
         current = self.head
 
         node = Node(new_value)
@@ -138,6 +161,18 @@ class LinkedList():
             current = current._next
 
     def insert_before(self, value, new_value):
+        """
+        Summary of insert_before function:  traverses the linked list searching for the 
+        input value and inserts a new value before that value
+
+        Parameters:
+        self (LinkedList): which is the current linked list object
+        value (string): a string value in linked list
+        new_Value (string) a string value 
+
+        Returns:
+        Nothing
+        """
         current = self.head
 
         node = Node(new_value)
@@ -197,7 +232,7 @@ if __name__ == "__main__":
     flowers = LinkedList()
     flowers.insert('tulip')
     flowers.insert('daffodile')
-    # flowers.insert('rose')
+    flowers.insert('rose')
 
     flowers.insert_after('tulip', 'geranium')
 
