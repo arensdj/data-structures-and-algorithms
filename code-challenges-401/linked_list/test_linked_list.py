@@ -183,6 +183,60 @@ def test_find_from_end_value_too_large():
 
     expected = ''
     actual = flowers.find_from_end(6)
-    print('Actual: ' + actual)
+    # print('Actual: ' + actual)
 
     assert expected == actual
+
+def test_ll_merge():
+    list1 = LinkedList()
+    list1.insert('1')
+    list1.insert('3')
+    list1.insert('5')
+    
+    list2 = LinkedList()
+    list2.insert('2')
+    list2.insert('4')
+    list2.insert('6')
+
+    head1 = list1.head
+    expected = head1
+    actual = list1.ll_merge(list2)
+
+    assert actual == expected
+
+
+# def test_ll_merge_empty_ll():
+#     list1 = LinkedList()
+#     list1.insert('1')
+#     list1.insert('3')
+#     list1.insert('5')
+#
+#     list2 = LinkedList()
+#
+#     head1 = list1.head
+#     expected = head1
+#     actual = list1.ll_merge(list2)
+#
+#     assert actual == expected
+
+
+# def test_ll_merge_empty_2():
+#     list1 = LinkedList()
+#     # list1.insert('1')
+#     # list1.insert('3')
+#     # list1.insert('5')
+#
+#     list2 = LinkedList()
+#     list2.insert('2')
+#     list2.insert('4')
+#     list2.insert('6')
+#
+#     # flowers.insert_after('tulip', 'geranium')
+#
+#     head1 = list1.head
+#     expected = head1
+#     actual = list1.ll_merge(list2)
+#
+#     # print('Actual: ' + str(actual))
+#     # print('Expected: ' + str(list1))
+#     assert actual == expected
