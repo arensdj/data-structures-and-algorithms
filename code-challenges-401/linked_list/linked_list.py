@@ -184,6 +184,44 @@ class LinkedList():
 
             current = current._next
 
+    def ll_merge(self, list2):
+        """
+         Summary of ll_merge function:   takes two linked lists as arguments. Zip the two linked lists together into
+         one so that the nodes alternate between the two lists and return a reference to the head of the zipped list.
+
+         Parameters:
+         self (LinkedList): linked list
+         list2 (LinkedList): a linked list
+
+         Returns:
+         reference to head of zipped list
+         """
+        head1 = self.head
+        head2 = list2.head
+
+        if head1 or head2:
+            curr1 = head1
+            curr2 = head2
+            ref1 = head1
+            ref2 = head2
+
+            while curr1._next or curr2._next:
+                ref1 = curr1._next
+                ref2 = curr2._next
+                curr2._next = ref1
+                curr1._next = curr2
+                curr2 = ref2
+                curr1 = ref1
+
+            if curr1._next:
+                curr2._next = ref1
+            else:
+                curr1._next = ref2
+        else:
+            head1 = None
+
+        return head1
+
 
     def print(self):
         """
@@ -229,11 +267,20 @@ class Node():
 
 
 if __name__ == "__main__":
-    flowers = LinkedList()
-    flowers.insert('tulip')
-    flowers.insert('daffodile')
-    flowers.insert('rose')
+    print('Inside main.')
+    list1 = LinkedList()
+    list1.insert('1')
+    list1.insert('3')
+    # list1.insert('5')
+    # list1.insert('7')
 
-    flowers.insert_after('tulip', 'geranium')
+    list2 = LinkedList()
+    list2.insert('2')
+    list2.insert('4')
+    list2.insert('6')
+    # list2.insert('8')
 
-    print(flowers.print())
+    # flowers.insert_after('tulip', 'geranium')
+    new_list = list1.ll_merge(list2)
+
+
