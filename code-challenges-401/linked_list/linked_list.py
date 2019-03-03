@@ -25,10 +25,10 @@ class LinkedList():
 
     def insert(self, value):
         """
-        Summary of insert method:  inserts a value at the end of linked list
+        Summary of insert method: takes an input value as an argument and adds a new node with that value to the head of the list 
 
         Attributes:
-        value (string):  a string value to insert at the end of linked list
+        value (string):  a string value to insert at the head of linked list
 
         Returns:
         Nothing
@@ -40,17 +40,8 @@ class LinkedList():
         if not self.head:
             self.head = node
         else:
-            current = self.head
-
-            try:
-                # Iterate over linked list to find the end.
-                while current._next:
-                    current = current._next
-
-                # Found end of list. Insert value by setting current to the node.
-                current._next = node
-            except StopIteration:
-                print("Can't find the next object in linked list.")
+            node._next = self.head
+            self.head = node
 
     def append_item(self, new_value):
         """
@@ -64,16 +55,20 @@ class LinkedList():
         True if value found
         False if value not found
         """
-        current = self.head
         node = Node(new_value)
 
-        try:
-            while current._next:
-                current = current._next
+        if not self.head:
+            self.head = node
+        else:
+            current = self.head
 
-            current._next = node
-        except StopIteration:
-            print("Can't find the next object in linked list.")
+            try:
+                while current._next:
+                    current = current._next
+
+                current._next = node
+            except StopIteration:
+                print("Can't find the next object in linked list.")
 
     def find_from_end(self, k):
         """
@@ -150,15 +145,14 @@ class LinkedList():
 
         node = Node(new_value)
         while current._next:
-            # if current._next.value == value:
-            #     node._next = current._next._next
-            if current._next.value == value:
-                # node._next = current._next._next
-                node._next = current._next._next
-                current._next._next = node
+            if current.value == value:
+                node._next = current._next
+                current._next = node
                 return
 
             current = current._next
+        
+        current._next = node
 
     def insert_before(self, value, new_value):
         """
@@ -186,42 +180,44 @@ class LinkedList():
 
     def ll_merge(self, list2):
         """
-         Summary of ll_merge function:   takes two linked lists as arguments. Zip the two linked lists together into
-         one so that the nodes alternate between the two lists and return a reference to the head of the zipped list.
+        Summary of ll_merge function:   takes two linked lists as arguments. Zip the two linked lists together into
+        one so that the nodes alternate between the two lists and return a reference to the head of the zipped list.
 
-         Parameters:
-         self (LinkedList): linked list
-         list2 (LinkedList): a linked list
+        Parameters:
+        self (LinkedList): linked list
+        list2 (LinkedList): a linked list
 
-         Returns:
-         reference to head of zipped list
-         """
+        Returns:
+        reference to head of zipped list
+        """
         head1 = self.head
         head2 = list2.head
 
         if head1 or head2:
             curr1 = head1
             curr2 = head2
-            ref1 = head1
-            ref2 = head2
 
-            while curr1._next or curr2._next:
+            while curr1:
                 ref1 = curr1._next
-                ref2 = curr2._next
-                curr2._next = ref1
+                ref2 = curr1
+
+                if curr2: 
+                    self.insert_after(curr1.value, curr2.value)
+                    curr1 = ref1
+                    curr2 = curr2._next
+                else:
+                    return head1
+
+            if curr2:
+                curr1 = ref2._next
                 curr1._next = curr2
-                curr2 = ref2
-                curr1 = ref1
+            
+            return head1
 
-            if curr1._next:
-                curr2._next = ref1
-            else:
-                curr1._next = ref2
+        elif head1 == None:
+            return head2
         else:
-            head1 = None
-
-        return head1
-
+            return head1
 
     def print(self):
         """
@@ -247,7 +243,6 @@ class LinkedList():
 
         return output
 
-
 class Node():
     """
     Summary of Node class:  Class definition of a node which is an individual item contained in a linked list. Each node contains the data for each item.
@@ -265,22 +260,5 @@ class Node():
         self.value = value
         self._next = None
 
-
 if __name__ == "__main__":
     print('Inside main.')
-    list1 = LinkedList()
-    list1.insert('1')
-    list1.insert('3')
-    # list1.insert('5')
-    # list1.insert('7')
-
-    list2 = LinkedList()
-    list2.insert('2')
-    list2.insert('4')
-    list2.insert('6')
-    # list2.insert('8')
-
-    # flowers.insert_after('tulip', 'geranium')
-    new_list = list1.ll_merge(list2)
-
-
