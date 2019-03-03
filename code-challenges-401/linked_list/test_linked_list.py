@@ -14,20 +14,17 @@
 
 from linked_list import LinkedList
 
-
 def test_exists():
     """
     Tests that a LinkedList class exists
     """
     assert LinkedList
 
-
 def test_instantiation():
     """
     Can successfully instantiate an empty linked list
     """
     assert LinkedList()
-
 
 def test_insert():
     """
@@ -41,7 +38,6 @@ def test_insert():
 
     assert expected == actual
 
-
 def test_head_points_to_first_node():
     """
     The head property will properly point to the first node in the linked list
@@ -54,7 +50,6 @@ def test_head_points_to_first_node():
 
     assert expected == actual
 
-
 def test_multiple_insert():
     """
     Can properly insert multiple nodes into the linked list
@@ -64,10 +59,9 @@ def test_multiple_insert():
     flowers.insert('lavender')
     flowers.insert('rose')
 
-    assert flowers.head.value == 'zinnia'
+    assert flowers.head.value == 'rose'
     assert flowers.head._next.value == 'lavender'
-    assert flowers.head._next._next.value == 'rose'
-
+    assert flowers.head._next._next.value == 'zinnia'
 
 def test_includes():
     """
@@ -80,7 +74,6 @@ def test_includes():
 
     assert flowers.includes('rose')
 
-
 def test_not_includes():
     """
     Will return false when finding a value that doesn't exist in the linked list
@@ -92,7 +85,6 @@ def test_not_includes():
 
     assert not flowers.includes('daisy')
 
-
 def test_print_list():
     """
     Can properly return a collection of all the values that exist in the linked list
@@ -102,8 +94,7 @@ def test_print_list():
     flowers.insert('daffodile')
     flowers.insert('crocus')
 
-    assert flowers.print() == 'tulip,daffodile,crocus,'
-
+    assert flowers.print() == 'crocus,daffodile,tulip,'
 
 def test_print_empty_list():
     """
@@ -115,7 +106,6 @@ def test_print_empty_list():
     actual = ''
     assert expected == actual
 
-
 def test_includes_empty_list():
     """
     Can properly return an empty array when linked list is empty
@@ -126,7 +116,6 @@ def test_includes_empty_list():
     actual = ''
     assert expected == actual
 
-
 def test_append_item():
     flowers = LinkedList()
     flowers.insert('tulip')
@@ -135,22 +124,29 @@ def test_append_item():
 
     assert flowers.head._next._next.value == 'geranium'
 
-
 def test_insert_before():
     flowers = LinkedList()
     flowers.insert('tulip')
     flowers.insert('daffodile')
-    flowers.insert_before('daffodile', 'geranium')
+    flowers.insert_before('tulip', 'geranium')
 
     assert flowers.head._next.value == 'geranium'
 
-# def test_insert_after():
-#     flowers = LinkedList()
-#     flowers.insert('tulip')
-#     flowers.insert('daffodile')
-#     flowers.insert_after('tulip', 'pansie')
+def test_insert_after():
+    flowers = LinkedList()
+    flowers.insert('tulip')
+    flowers.insert('geranium')
+    flowers.insert('daffodile')
+    flowers.insert_after('geranium', 'pansie')
 
-#     assert flowers.head._next.value == 'pansie'
+    assert flowers.head._next._next.value == 'pansie'
+
+def test_insert_after_head():
+    flowers = LinkedList()
+    flowers.insert('tulip')
+    flowers.insert_after('tulip', 'petunia')
+
+    assert flowers.head._next.value == 'petunia'
 
 def test_find_from_end():
     flowers = LinkedList()
@@ -160,7 +156,7 @@ def test_find_from_end():
     flowers.insert('geranium')
     flowers.insert('daffodile')
 
-    expected = 'rose'
+    expected = 'geranium'
     actual = flowers.find_from_end(3)
 
     assert expected == actual
@@ -183,60 +179,61 @@ def test_find_from_end_value_too_large():
 
     expected = ''
     actual = flowers.find_from_end(6)
-    # print('Actual: ' + actual)
 
     assert expected == actual
 
 def test_ll_merge():
     list1 = LinkedList()
-    list1.insert('1')
-    list1.insert('3')
-    list1.insert('5')
+    list1.append_item('1')
+    list1.append_item('3')
+    list1.append_item('5')
     
     list2 = LinkedList()
-    list2.insert('2')
-    list2.insert('4')
-    list2.insert('6')
+    list2.append_item('2')
+    list2.append_item('4')
+    list2.append_item('6')
 
-    head1 = list1.head
-    expected = head1
     actual = list1.ll_merge(list2)
 
-    assert actual == expected
+    assert list1.print() == '1,2,3,4,5,6,'
 
+def test_ll_merge_empty_ll():
+    list1 = LinkedList()
+    list1.append_item('1')
+    list1.append_item('3')
+    list1.append_item('5')
 
-# def test_ll_merge_empty_ll():
-#     list1 = LinkedList()
-#     list1.insert('1')
-#     list1.insert('3')
-#     list1.insert('5')
-#
-#     list2 = LinkedList()
-#
-#     head1 = list1.head
-#     expected = head1
-#     actual = list1.ll_merge(list2)
-#
-#     assert actual == expected
+    list2 = LinkedList()
 
+    actual = list1.ll_merge(list2)
+    assert list1.print() == '1,3,5,'
 
-# def test_ll_merge_empty_2():
-#     list1 = LinkedList()
-#     # list1.insert('1')
-#     # list1.insert('3')
-#     # list1.insert('5')
-#
-#     list2 = LinkedList()
-#     list2.insert('2')
-#     list2.insert('4')
-#     list2.insert('6')
-#
-#     # flowers.insert_after('tulip', 'geranium')
-#
-#     head1 = list1.head
-#     expected = head1
-#     actual = list1.ll_merge(list2)
-#
-#     # print('Actual: ' + str(actual))
-#     # print('Expected: ' + str(list1))
-#     assert actual == expected
+def test_ll_merge_empty_2():
+    list1 = LinkedList()
+    list1.append_item('1')
+    list1.append_item('3')
+    list1.append_item('5')
+    list1.append_item('7')
+
+    list2 = LinkedList()
+    list2.append_item('2')
+    list2.append_item('4')
+
+    actual = list1.ll_merge(list2)
+
+    assert list1.print() == '1,2,3,4,5,7,'
+
+def test_ll_merge_empty_2():
+    list1 = LinkedList()
+    list1.append_item('1')
+    list1.append_item('3')
+
+    list2 = LinkedList()
+    list2.append_item('2')
+    list2.append_item('4')
+    list2.append_item('6')
+    list2.append_item('8')
+
+    actual = list1.ll_merge(list2)
+
+    assert list1.print() == '1,2,3,4,6,8,'
