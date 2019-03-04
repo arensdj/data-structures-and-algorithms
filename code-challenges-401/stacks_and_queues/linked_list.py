@@ -24,27 +24,6 @@ class LinkedList():
         self.head = None
         self.tail = None
 
-    def insert(self, value):
-        """
-        Summary of insert method: takes an input value as an argument and adds a new node with that value to the head of the list 
-
-        Attributes:
-        value (string):  a string value to insert at the head of linked list
-
-        Returns:
-        Nothing
-        """
-        # Instantiate a new Node object that will contain the input value
-        node = Node(value)
-
-        # when head is not assigned to a node, assign a node to it
-        if not self.head:
-            self.head = node
-            self.tail = node
-        else:
-            node._next = self.head
-            self.head = node
-
     def append_item(self, new_value):
         """
         Summary of append_item method:  traverses the linked list and appends a new value after the last item in the linked list
@@ -131,6 +110,27 @@ class LinkedList():
             print("Can't find the next object in linked list.")
 
         return False
+
+    def insert(self, value):
+        """
+        Summary of insert method: takes an input value as an argument and adds a new node with that value to the head of the list 
+
+        Attributes:
+        value (string):  a string value to insert at the head of linked list
+
+        Returns:
+        Nothing
+        """
+        # Instantiate a new Node object that will contain the input value
+        node = Node(value)
+
+        # when head is not assigned to a node, assign a node to it
+        if not self.head:
+            self.head = node
+            self.tail = node
+        else:
+            node._next = self.head
+            self.head = node
 
     def insert_after(self, value, new_value):
         """
