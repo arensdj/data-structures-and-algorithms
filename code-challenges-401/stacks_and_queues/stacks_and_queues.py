@@ -17,7 +17,9 @@ class Node():
 
 class Queue():    # this is composition.  Not extending LinkedList but using its behavior
     """
-    Summary of Queue class:  A queue is a data structure that consists of Nodes. Each Node references the next node in the queue, but does not reference it’s previous.  This Queue class is a composition of the LinkedList class.  It uses some of the LinkedList class methods.
+    Summary of Queue class:  A queue is a data structure that consists of Nodes. Each Node references the next node in 
+    the queue, but does not reference it’s previous.  This Queue class is a composition of the LinkedList class.  It 
+    uses some of the LinkedList class methods.
 
     Attributes:
     self._list: a linked list
@@ -82,7 +84,9 @@ class Queue():    # this is composition.  Not extending LinkedList but using its
 
 class Stack():
     """
-    Summary of Stack class:  A stack is a data structure that consists of Nodes. Each Node references the next node in the stack, but does not reference it’s previous.  This Stack class is a composition of the LinkedList class.  It uses some of the LinkedList class methods.
+    Summary of Stack class:  A stack is a data structure that consists of Nodes. Each Node references the next node 
+    in the stack, but does not reference it’s previous.  This Stack class is a composition of the LinkedList class.  
+    It uses some of the LinkedList class methods.
 
     Attributes:
     self._list: an instance of a linked list
