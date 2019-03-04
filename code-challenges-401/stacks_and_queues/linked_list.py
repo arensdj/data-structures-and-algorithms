@@ -7,7 +7,7 @@ class LinkedList():
     head: Initially assigned value of None.
 
     Returns:
-    An empty of a linked list
+    An empty linked list
     """
 
     # Initializer / Instance Attributes
@@ -22,6 +22,7 @@ class LinkedList():
         An empty of a linked list
         """
         self.head = None
+        self.tail = None
 
     def insert(self, value):
         """
@@ -39,13 +40,14 @@ class LinkedList():
         # when head is not assigned to a node, assign a node to it
         if not self.head:
             self.head = node
+            self.tail = node
         else:
             node._next = self.head
             self.head = node
 
     def append_item(self, new_value):
         """
-        Summary of append_item function:  traverses the linked list and appends a new value after the last item in the linked list
+        Summary of append_item method:  traverses the linked list and appends a new value after the last item in the linked list
 
         Parameters:
         self (LinkedList): which is the current linked list object
@@ -59,6 +61,7 @@ class LinkedList():
 
         if not self.head:
             self.head = node
+            self.tail = node
         else:
             current = self.head
 
@@ -67,12 +70,13 @@ class LinkedList():
                     current = current._next
 
                 current._next = node
+                self.tail = current
             except StopIteration:
                 print("Can't find the next object in linked list.")
 
     def find_from_end(self, k):
         """
-        Summary of find_from_end function:  traverses linked list searching for a value that
+        Summary of find_from_end method:  traverses linked list searching for a value that
         is k values from the end of linked list
 
         Parameters:
@@ -104,7 +108,7 @@ class LinkedList():
 
     def includes(self, value):
         """
-        Summary of includes function:  traverses linked list searching for a value
+        Summary of includes method:  traverses linked list searching for a value
 
         Parameters:
         value (string): string a value used to search linked list
@@ -130,7 +134,7 @@ class LinkedList():
 
     def insert_after(self, value, new_value):
         """
-        Summary of insert_after function:  traverses the linked list searching for the 
+        Summary of insert_after method:  traverses the linked list searching for the 
         input value and inserts a new value after that value
 
         Parameters:
@@ -153,10 +157,11 @@ class LinkedList():
             current = current._next
         
         current._next = node
+        self.tail = current
 
     def insert_before(self, value, new_value):
         """
-        Summary of insert_before function:  traverses the linked list searching for the 
+        Summary of insert_before method:  traverses the linked list searching for the 
         input value and inserts a new value before that value
 
         Parameters:
@@ -180,7 +185,7 @@ class LinkedList():
 
     def ll_merge(self, list2):
         """
-        Summary of ll_merge function:   takes two linked lists as arguments. Zip the two linked lists together into
+        Summary of ll_merge method:   takes two linked lists as arguments. Zip the two linked lists together into
         one so that the nodes alternate between the two lists and return a reference to the head of the zipped list.
 
         Parameters:
@@ -221,7 +226,7 @@ class LinkedList():
 
     def print(self):
         """
-        Summary of print function:  Prints the values in linked list to standard output
+        Summary of print method:  Prints the values in linked list to standard output
 
         Parameters:
         self which is the current linked list object
@@ -243,17 +248,50 @@ class LinkedList():
 
         return output
 
-    def remove_from_end(self, value):
+    def remove_from_list_end(self):
+        """
+        Summary of remove_from_list_end method:  traverses to the end of the linked list and removes   
+        the last node
 
-    
-    def remove_from_front(self):
-        head = self.head
+        Parameters:
+        self (LinkedList): which is the current linked list object
+
+        Returns:
+        Nothing
+        """
         current = self.head
+        temp = self.tail
+
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+            return
+        else:
+            while current._next != self.tail:
+                current = current._next
+        
+            self.tail = current
+            temp._next = None
+
+    def remove_from_top(self):
+        """
+        Summary of remove_from_top method:  removes first node on the linked list
+
+        Parameters:
+        self (LinkedList): which is the current linked list object
+
+        Returns:
+        Nothing
+        """
+        current = self.head
+        temp = self.head
 
         if current:
-          head = current._next
-          current = head
-
+            current = current._next
+            self.head = current
+            temp._next = None
+        else:
+            self.head.value = ''
 
 class Node():
     """
@@ -272,5 +310,4 @@ class Node():
         self.value = value
         self._next = None
 
-if __name__ == "__main__":
-    print('Inside main.'
+# if __name__ == "__main__":
