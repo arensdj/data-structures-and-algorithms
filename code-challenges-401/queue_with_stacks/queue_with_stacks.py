@@ -25,7 +25,12 @@ class PseudoQueue():
         """
         remove from front
         """
-        pass
+        if (self._in_stack):
+            self._in_stack.pop()
+            self.front = self._in_stack.top
+            print(str(self.front.value))
+
+            
 
 if __name__ == "__main__":
     card_queue = PseudoQueue()
