@@ -27,3 +27,6 @@ def tst_dequeue_one_value():
 
     assert card_queue.front.value == '2'
 
+    card_queue.dequeue()
+    
+
