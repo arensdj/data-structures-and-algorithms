@@ -7,12 +7,9 @@ class AnimalShelter():
         self.front = self._in_stack.top
         # self.rear = self._in_stack.top
 
+    def enqueue(self, animal):
         """
-        only 2 Stacks available for storage
-        """
-    def enqueue(self, val):
-        """
-        add to rear
+        add to top
         """
         # for item in range(len(input_list)):
         #     self._in_stack.push(item)
@@ -20,9 +17,9 @@ class AnimalShelter():
         self.front = self._in_stack.top
         print(str(self.front.value))
 
-    def dequeue(self):
+    def dequeue(self, pref):
         """
-        remove from front
+        remove from top
         """
         temp = ''
         if self._out_stack.peek():
@@ -45,11 +42,11 @@ class AnimalShelter():
 
 
 if __name__ == "__main__":
-    card_queue = PseudoQueue()
-    card_list = ['1', '2', '3']
+    animal_queue = AnimalShelter()
+    animals = ['dog1', 'dog2', 'cat1']
     print(str(card_list))
-    for item in range(len(card_list)):
-        card_queue.enqueue(item)
+    for animal in range(len(animals)):
+        animal_queue.enqueue(animal)
     
+    animal_queue = AnimalShelter()
     print('Front: ' + str(card_queue.front))
-    # print('Rear: ' + str(card_queue.rear))
