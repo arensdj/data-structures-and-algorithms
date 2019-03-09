@@ -290,8 +290,12 @@ class LinkedList():
             current = current._next
             self.head = current
             temp._next = None
+
+            return temp.value
         else:
             self.head.value = ''
+
+            return self.head.value
 
 class Node():
     """

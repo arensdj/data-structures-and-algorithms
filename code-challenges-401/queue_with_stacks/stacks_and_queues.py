@@ -114,7 +114,7 @@ class Stack():
         try:
             self.top = self._list.head.value   
             return self.top 
-        except NullReferenceException:
+        except: # NullReferenceException:
             print('Stack is empty')
         
     def pop(self):
@@ -128,8 +128,10 @@ class Stack():
         The value of the node on stop of stack
         """
         try:
-            self._list.remove_from_top()
+            value = self._list.remove_from_top()
             self.top = self._list.head
+
+            return value
         except NullReferenceException:
             print('Stack is empty.')
 
