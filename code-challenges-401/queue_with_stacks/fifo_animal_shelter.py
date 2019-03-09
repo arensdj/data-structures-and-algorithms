@@ -2,46 +2,65 @@ from stacks_and_queues import Stack
 from linked_list import LinkedList
 
 class AnimalShelter():
+  """
+    Summary of AnimalShelter class:  The purpose of this class is to implement a queue using two Stacks.  This utilizes a composition of the Stack class.
+
+    Attributes:
+    self._in_stack 
+    self._out_stack
+    self.top_in_stack
+    self.top_out_stack
+
+    Returns:
+    An empty queue
+    """   
     def __init__(self):
         self._in_stack = Stack()
-        self.front = self._in_stack.top
+        self._out_stack = Stack()
+        self.top_in_stack = self._in_stack.top
+        self.top_out_stack = self._out_stack.top
 
     def enqueue(self, animal):
         """
-        add to top
+        Summary of enqueue method:  Adds input animal string to rear of queue, which is stop of stack
+        
+        Parameters:
+        self (PsuedoQueue): which is the current PseudoQueue object
+        animal (string): a string value 
+
+        Returns:
+        Nothing
         """
-        # for item in range(len(input_list)):
-        #     self._in_stack.push(item)
         self._in_stack.push(animal)
-        self.front = self._in_stack.top
-        print(str(self.front.value))
+        self.top_in_stack = self._in_stack.top
+
+        # print(str(self.front.value))
 
     def dequeue(self, pref):
         """
-        remove from top
+        Summary of dequeue method:  Removes a value from front of queue
+        
+        Parameters:
+        self (PsuedoQueue): which is the current PseudoQueue object
+        pref (string) : value to remove from queue
+
+        Returns:
+        Value removed from front of queue
         """
-        temp = ''
         if pref != 'dog' and pref != 'cat':
             return Null
         
-        if self._out_stack.peek():
+        if self._out_stack.peek() == pref:
             return self._out_stack.pop()
 
         # if self._in_stack.peek():
         #     while self._in_stack.peek():
-        #         # temp = self._in_stack.pop()
-        #         # self._out_stack.push(temp)
-        #         self._out_stack.push(self._in_stack.pop())
+        #         self._out_stack.push(self._in_stack.peek())
 
-        #     # temp._next = None
-        #     self.front = self._in_stack.top
-        #     print(str(self.front.value))
-        #     print(str(temp.value))
-
+        #     self.top_in_stack = self._out_stack.top.value
         #     return self._out_stack.pop()
         # else:
         #     return None
-
 
 if __name__ == "__main__":
     animal_queue = AnimalShelter()
@@ -50,5 +69,5 @@ if __name__ == "__main__":
     for animal in range(len(animals)):
         animal_queue.enqueue(animal)
     
-    animal_queue = AnimalShelter()
-    print('Front: ' + str(card_queue.front))
+    animal_queue.dequeue()
+    print('Front: ' + str(animal_queue.top_in_stack))
