@@ -130,9 +130,8 @@ class Stack():
         try:
             value = self._list.remove_from_top()
             self.top = self._list.head
-
             return value
-        except NullReferenceException:
+        except: # NullReferenceException:
             print('Stack is empty.')
 
     def push(self, value):

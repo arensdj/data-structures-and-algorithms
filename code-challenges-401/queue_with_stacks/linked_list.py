@@ -5,6 +5,7 @@ class LinkedList():
 
     Attributes:
     head: Initially assigned value of None.
+    tail: Initially assigned value of None.
 
     Returns:
     An empty linked list
