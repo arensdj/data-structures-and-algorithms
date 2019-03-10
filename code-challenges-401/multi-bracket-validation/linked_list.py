@@ -5,6 +5,7 @@ class LinkedList():
 
     Attributes:
     head: Initially assigned value of None.
+    tail: Initially assigned value of None.
 
     Returns:
     An empty linked list
@@ -290,8 +291,12 @@ class LinkedList():
             current = current._next
             self.head = current
             temp._next = None
+
+            return temp.value
         else:
-            self.head.value = ''
+            # self.head.value = ''
+
+            return self.head
 
 class Node():
     """
