@@ -112,7 +112,7 @@ class Stack():
         The value of the node on top of stack
         """
         try:
-            self.top = self._list.head.value   
+            self.top = self._list.head
             return self.top 
         except NullReferenceException:
             print('Stack is empty')
