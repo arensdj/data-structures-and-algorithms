@@ -8,7 +8,7 @@ def test_animal_shelter_exists():
 
 def test_instantiation():
     """
-    Test that class can be instatiated
+    Test that class can be instantiated
     """
     assert AnimalShelter()
 
@@ -35,7 +35,7 @@ def test_enqueue_multiple_animal_strings():
 
 def test_dequeue_one_value():
     """
-    Test that one values can be dequeued (popped off stack)
+    Test that one value can be dequeued (popped off stack)
     """    
     animal_queue = AnimalShelter()
     animal_queue.enqueue('dog')
@@ -48,7 +48,7 @@ def test_dequeue_one_value():
 
 def test_dequeue_two_values():
     """
-    Test that one values can be dequeued (popped off stack)
+    Test that two values can be dequeued (popped off stack)
     """
     animal_queue = AnimalShelter()
     animal_queue.enqueue('dog')
@@ -65,7 +65,7 @@ def test_dequeue_two_values():
     assert animal_queue._out_stack.top.value == 'dog'
 
 
-def test_dequeue_two_values():
+def test_dequeue_invalid_value():
     """
     Test that one values can be dequeued (popped off stack)
     """
@@ -75,10 +75,4 @@ def test_dequeue_two_values():
     animal_queue.enqueue('dog')
     animal_queue.enqueue('dog')
 
-    assert animal_queue.dequeue('dog') == 'dog'
-
-    assert animal_queue._out_stack.top.value == 'cat'
-
-    assert animal_queue.dequeue('cat') == 'cat'
-
-    assert animal_queue._out_stack.top.value == 'dog'
+    assert animal_queue.dequeue('bird') == None
