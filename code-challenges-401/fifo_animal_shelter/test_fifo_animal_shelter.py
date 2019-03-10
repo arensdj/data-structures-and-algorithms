@@ -44,3 +44,5 @@ def test_dequeue_one_value():
     animal_queue.dequeue('cat')
 
     assert animal_queue.front_out_stack.value == 'dog'
+
+    

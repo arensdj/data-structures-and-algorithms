@@ -25,9 +25,6 @@ class AnimalShelter():
         if pref != 'dog' and pref != 'cat':
             return Null
         
-        # if self._out_stack.peek():
-            # return self._out_stack.pop()
-
         if self._in_stack.peek():
             # pop everything on in_stack and push on out_stack
             while self._in_stack.peek():
