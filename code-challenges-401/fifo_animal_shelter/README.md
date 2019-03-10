@@ -1,11 +1,12 @@
 # First-in, First out Animal Shelter.
-<!-- Short summary or background information -->
+# The purpose of this class is to implement a queue using two Stacks. This utilizes a composition of the Stack class.  The class will manage information on dogs and cats using a first-in, first-out approach.
 
 ## Challenge
-<!-- Description of the challenge -->
+# Implement a queue using two Stack instances.  
 
 ## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+# Used two Stack objects, one for input stack used to enqueue input values and second 
+# Stack object for dequeueing nodes off of ouput stack.
 
 ## Solution
 <!-- Embedded whiteboard image -->

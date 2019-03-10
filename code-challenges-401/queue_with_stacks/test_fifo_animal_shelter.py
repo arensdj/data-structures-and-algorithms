@@ -1,4 +1,4 @@
-from queue_with_stacks import PseudoQueue
+from fifo_animal_shelter import AnimalShelter
 
 def test_pseudo_queue_exists():
     """
@@ -24,7 +24,7 @@ def test_enqueue_one_value():
 def test_enqueue_two_values():
     """
     Test that two values can be enqueued (pushed on stack)
-    """ 
+    """
     card_queue = PseudoQueue()
     card_queue.enqueue('1')
     card_queue.enqueue('2')
@@ -34,7 +34,7 @@ def test_enqueue_two_values():
 def test_dequeue_one_value():
     """
     Test that one value can be dequeued (popped off stack)
-    """ 
+    """
     card_queue = PseudoQueue()
     card_queue.enqueue('1')
     card_queue.enqueue('2')
@@ -49,7 +49,7 @@ def test_dequeue_one_value():
 def test_dequeue_two_values():
     """
     Test that two values can be dequeued (popped off stack)
-    """ 
+    """
     card_queue = PseudoQueue()
     card_queue.enqueue('1')
     card_queue.enqueue('2')
@@ -60,6 +60,6 @@ def test_dequeue_two_values():
 
     result = card_queue.dequeue()
     assert result == '1'
-    
+
     result = card_queue.dequeue()
     assert result == '2'

@@ -72,7 +72,6 @@ class PseudoQueue():
             while self._in_stack.peek():
                 self._out_stack.push(self._in_stack.pop())
 
-
             self.top_out_stack = self._out_stack.top.value
             # print('Top of out stack: ')
             # print(str(self._out_stack.top))
