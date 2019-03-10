@@ -79,7 +79,7 @@ class Queue():    # this is composition.  Not extending LinkedList but using its
         """
         try:
             return self._list.tail.value
-        except: # NullReferenceException:
+        except NullReferenceException:
             print('Queue is empty')
 
 class Stack():
@@ -128,10 +128,12 @@ class Stack():
         The value of the node on stop of stack
         """
         try:
-            self._list.remove_from_top()
+            value = self._list.remove_from_top()
             self.top = self._list.head
-        except NullReferenceException:
+            return value
+        except NameError:
             print('Stack is empty.')
+            return None
 
     def push(self, value):
         """

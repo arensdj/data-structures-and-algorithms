@@ -31,6 +31,7 @@ def test_enqueue_multiple_animal_strings():
     animal_queue.enqueue('cat')
 
     assert animal_queue.front_in_stack.value == 'cat'
+    assert animal_queue._in_stack.top.value == 'cat'
 
 def test_dequeue_one_value():
     """
@@ -38,11 +39,46 @@ def test_dequeue_one_value():
     """    
     animal_queue = AnimalShelter()
     animal_queue.enqueue('dog')
+    animal_queue.enqueue('cat')
+    animal_queue.enqueue('dog')
+
+    animal_queue.dequeue('dog')
+
+    assert animal_queue._out_stack.top.value == 'cat'
+
+def test_dequeue_two_values():
+    """
+    Test that one values can be dequeued (popped off stack)
+    """
+    animal_queue = AnimalShelter()
     animal_queue.enqueue('dog')
     animal_queue.enqueue('cat')
+    animal_queue.enqueue('dog')
+    animal_queue.enqueue('dog')
 
-    animal_queue.dequeue('cat')
+    assert animal_queue.dequeue('dog') == 'dog'
 
-    assert animal_queue.front_out_stack.value == 'dog'
+    assert animal_queue._out_stack.top.value == 'cat'
 
-    
+    assert animal_queue.dequeue('cat') == 'cat'
+
+    assert animal_queue._out_stack.top.value == 'dog'
+
+
+def test_dequeue_two_values():
+    """
+    Test that one values can be dequeued (popped off stack)
+    """
+    animal_queue = AnimalShelter()
+    animal_queue.enqueue('dog')
+    animal_queue.enqueue('cat')
+    animal_queue.enqueue('dog')
+    animal_queue.enqueue('dog')
+
+    assert animal_queue.dequeue('dog') == 'dog'
+
+    assert animal_queue._out_stack.top.value == 'cat'
+
+    assert animal_queue.dequeue('cat') == 'cat'
+
+    assert animal_queue._out_stack.top.value == 'dog'

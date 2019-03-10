@@ -294,9 +294,9 @@ class LinkedList():
 
             return temp.value
         else:
-            self.head.value = ''
+            # self.head.value = ''
 
-            return self.head.value
+            return self.head
 
 class Node():
     """
