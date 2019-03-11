@@ -31,21 +31,41 @@ class BinaryTree():
         Returns:
         An array that is ordered via pre order.
         """
-        # tmp_array = []
+        # current_node = self.root_node
+        # self.sort_list.append(self.root_node.value)
 
-        if current_node is None:
-            # return tmp_array
+        # while True:
+        if current_node == None:
             current_node = self.root_node
-            self.pre_order(current_node)
-            return
-        else:
             self.sort_list.append(current_node.value)
-
-            self.pre_order(current_node._left_child)
-
-            self.pre_order(current_node._right_child)
+            current_node = self.root_node._left_child
+            self.pre_order(current_node)
 
             return
+
+        else:
+            if current_node._left_child != None:
+                # if self.root_node._left_child != None:
+                self.sort_list.append((current_node.value))
+                current_node = self.root_node._left_child
+                self.pre_order(current_node)
+
+                # return None
+
+                # current_node = self.root_node
+                # self.pre_order(current_node)
+                # # return
+            elif current_node._right_child != None:
+                 self.sort_list.append(current_node.value)
+
+                 current_node = self.root_node._right_child
+                 self.pre_order(current_node)
+
+                 # self.pre_order(current_node._right_child)
+
+            return
+
+        # return
 
     def in_order(self):
         """
@@ -114,7 +134,6 @@ class BinarySearchTree():
 
     def get_pre_order_data(self):
         return self.binary_tree.pre_order(None)
-
 
 
 if __name__ == "__main__":
