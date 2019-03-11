@@ -11,24 +11,17 @@ class Node():
     A new instance of a Node class.
     """
     def __init__(self, value):
-        self._value = value
-        self._left_node = None
-        self._right_node = None
+        self.value = value
+        self._left_child = None
+        self._right_child = None
 
 class BinaryTree():
-        def __init__(self, new_value):
-        """
-        Summary of constructor:  initializes binary tree with a root node
 
-        Attributes:
-        self.head
+    def __init__(self):
+        self.root_node = None
+        self.sort_list = []
 
-        Returns:
-        An empty binary tree
-        """
-        root_node = Node(new_value)
-
-    def pre_order(self):
+    def pre_order(self, current_node):
         """
         Summary of pre_order method: returns an array of the value following the pre order which is node, left, right.
 
@@ -38,7 +31,21 @@ class BinaryTree():
         Returns:
         An array that is ordered via pre order.
         """
-        pass
+        # tmp_array = []
+
+        if current_node is None:
+            # return tmp_array
+            current_node = self.root_node
+            self.pre_order(current_node)
+            return
+        else:
+            self.sort_list.append(current_node.value)
+
+            self.pre_order(current_node._left_child)
+
+            self.pre_order(current_node._right_child)
+
+            return
 
     def in_order(self):
         """
@@ -64,18 +71,68 @@ class BinaryTree():
         """
         pass
 
+class BinarySearchTree():
 
+    def __init__(self):
+        """
+        Summary of constructor:  initializes binary tree with a root node
 
-class BinarySearchTree(BinaryTree):
+        Attributes:
+        self.head
 
-    def add(self, new_value):
-        node = Node(new_value)
+        Returns:
+        An empty binary tree
+        """
+        self.binary_tree = BinaryTree()
 
-        if node._value < root_node._value:
-            root_node._left_node = node
+    def add(self, current_node, new_node):
+        if current_node == None:
+            if self.binary_tree.root_node == None:
+                self.binary_tree.root_node = new_node
+            else:
+                self.add(self.binary_tree.root_node, new_node)
+
+            return
         else:
-            root_node._right_node = node
+            # while not added_node:
+            if new_node.value < current_node.value:
+                if current_node._left_child == None:
+                    current_node._left_child = new_node
+                    return
+                else:
+                    self.add(current_node, new_node)
+            else:
+                if current_node._right_child == None:
+                    current_node._right_child = new_node
+                    return
+                else:
+                    self.add(current_node, new_node)
 
 
     def contains(self, value):
         pass
+
+    def get_pre_order_data(self):
+        return self.binary_tree.pre_order(None)
+
+
+
+if __name__ == "__main__":
+    # binary_tree = BinaryTree()
+    binary_search_tree = BinarySearchTree()
+
+    new_node = Node(5)
+    binary_search_tree.add(None, new_node)
+
+    new_node = Node(3)
+    binary_search_tree.add(None, new_node)
+
+    new_node = Node(10)
+    binary_search_tree.add(None, new_node)
+
+    array_pre_order = []
+    array_pre_order = binary_search_tree.get_pre_order_data()
+
+
+
+
