@@ -151,7 +151,3 @@ if __name__ == "__main__":
 
     array_pre_order = []
     array_pre_order = binary_search_tree.get_pre_order_data()
-
-
-
-
