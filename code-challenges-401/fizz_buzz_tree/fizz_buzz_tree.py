@@ -3,6 +3,16 @@ from tree import Node, BinaryTree, BinaySearchTree
 
 def FizzBuzzTree(binary_tree):
 
+self.sort_list.append(node)
+
+        if node._left_child != None:
+            self.pre_order(node._left_child)
+
+        if node._right_child != None:
+            self.pre_order(node._right_child)
+
+        return self.sort_list
+
 
 
 
