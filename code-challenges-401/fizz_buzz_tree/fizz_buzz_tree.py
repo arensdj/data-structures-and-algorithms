@@ -8,8 +8,7 @@ def FizzBuzzTree(binary_tree):
         return
     
     if binary_tree._left_child and binary_tree._right_child:
-        if binary_tree._left_child.value % 5 and
-            binary_tree._right_child.value % 3:
+        if binary_tree._left_child.value % 5 and binary_tree._right_child.value % 3:
             binary_tree._left_child.value = 'FizzBuzz'
             binary_tree._right_child.value = 'FizzBuzz'
     elif binary_tree._left_child:
@@ -33,14 +32,13 @@ def FizzBuzzTree(binary_tree):
     return 
 
 
-if __init__ = '__main__':
+if __init__ == '__main__':
     binary_search_tree = BinarySearchTree()
     binary_search_tree.add(24)
     binary_search_tree.add(5)
     binary_search_tree.add(3)
-    binary_search_tree.add(10)
-    binary_search_tree.add(27)
-    binary_search_tree.add(182)
+    # binary_search_tree.add(10)
+    # binary_search_tree.add(27)
+    # binary_search_tree.add(182)
 
-    result = False
-    result = FizzBuzzTree(binary_search_tree)
+    FizzBuzzTree(binary_search_tree)
