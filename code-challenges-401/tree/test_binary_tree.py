@@ -50,4 +50,17 @@ def test_not_contains():
 
     assert not tree.contains(7)
 
+def test_inorder_traversal():
+    tree = BinarySearchTree()
+    tree.add(99)
+    tree.add(128)
+    tree.add(56)
+    # tree.add(70)
+
+    expected = ['56','99','128']
+    result = []
+    result = tree.get_in_order_data() 
+
+    assert result == expected
+
 
