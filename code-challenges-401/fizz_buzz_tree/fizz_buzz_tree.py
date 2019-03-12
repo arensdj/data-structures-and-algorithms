@@ -2,19 +2,35 @@ from tree import Node, BinaryTree, BinaySearchTree
 
 
 def FizzBuzzTree(binary_tree):
+    # navigate the tree in preorder traversal
 
-self.sort_list.append(node)
+    if binary_tree.root_node is None:
+        return
+    
+    if binary_tree._left_child and binary_tree._right_child:
+        if binary_tree._left_child.value % 5 and
+            binary_tree._right_child.value % 3:
+            binary_tree._left_child.value = 'FizzBuzz'
+            binary_tree._right_child.value = 'FizzBuzz'
+    elif binary_tree._left_child:
+        if binary_tree._left_child.value % 3:
+            binary_tree._left_child.value = 'Fizz'
+        elif binary_tree._left_child.value % 5:
+            binary_tree._left_child.value = 'Buzz'
+    elif binary_tree._right_child:
+        if binary_tree._right_child.value % 3:
+            binary_tree._right_child.value = 'Fizz'
+        elif binary_tree._right_child.value % 5:
+            binary_tree._left_child.value = 'Buzz'
 
-        if node._left_child != None:
-            self.pre_order(node._left_child)
 
-        if node._right_child != None:
-            self.pre_order(node._right_child)
+    if binary_tree._left_child != None:
+        self.FizzBuzzTree(binary_tree._left_child)
 
-        return self.sort_list
+    if binary_tree._right_child != None:
+        self.FizzBuzzTree(binary_tree._right_child)
 
-
-
+    return 
 
 
 if __init__ = '__main__':
