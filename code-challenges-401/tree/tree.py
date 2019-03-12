@@ -31,8 +31,7 @@ class BinaryTree():
         self.root_node = None
         self.sort_list = []
 
-    def pre_order(self):
-    # def pre_order(self, node):
+    def pre_order(self, node):
         """
         Summary of pre_order method: returns an array of the value following the pre order which is node, left, right.
 
@@ -43,24 +42,15 @@ class BinaryTree():
         Returns:
         An array that is ordered via pre order.
         """
-        self.sort_list.append(self.root_node)
+        self.sort_list.append(node.value)
 
-        if self.root_node._left_child is not None:
-            self.pre_order(self.root_node._left_child)
+        if node._left_child is not None:
+            self.pre_order(node._left_child)
 
-        if self.root_node._right_child is not None:
-            self.pre_order(self.root_node._right_child)
-
-        # self.sort_list.append(node)
-
-        # if node._left_child is not None:
-        #     self.pre_order(node._left_child)
-
-        # if node._right_child is not None:
-        #     self.pre_order(node._right_child)
+        if node._right_child is not None:
+            self.pre_order(node._right_child)
 
         return self.sort_list
-
 
     def in_order(self, node):
         """
@@ -76,13 +66,12 @@ class BinaryTree():
         if node._left_child is not None:
             self.in_order(node._left_child)
 
-        self.sort_list.append(node)
+        self.sort_list.append(node.value)
 
         if node._right_child is not None:
             self.in_order(node._right_child)
 
         return self.sort_list
-
 
     def post_order(self, node):
         """
@@ -100,7 +89,7 @@ class BinaryTree():
         if node._right_child is not None:
             self.post_order(node._right_child)
 
-        self.sort_list.append(node)
+        self.sort_list.append(node.value)
 
         return self.sort_list
 
@@ -118,7 +107,6 @@ class BinarySearchTree():
         """
         self.binary_tree = BinaryTree()
 
-    # def add(self, current_node, new_value):
     def add(self, new_value):
         """
         Summary of add method: returns an array of the value following the in order which is left, right, node
@@ -195,8 +183,7 @@ class BinarySearchTree():
         An array that is ordered via post order.
         """
         self.binary_tree.sort_list = []
-        return self.binary_tree.pre_order()
-        # return self.binary_tree.pre_order(self.binary_tree.root_node)
+        return self.binary_tree.pre_order(self.binary_tree.root_node)
 
     def get_post_order_data(self):
         """
@@ -223,7 +210,6 @@ class BinarySearchTree():
         """
         self.binary_tree.sort_list = []
         return self.binary_tree.in_order(self.binary_tree.root_node)
-        # return self.binary_tree.in_order(self.binary_tree.root_node)
 
 if __name__ == "__main__":
     binary_search_tree = BinarySearchTree()

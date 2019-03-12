@@ -55,12 +55,33 @@ def test_inorder_traversal():
     tree.add(99)
     tree.add(128)
     tree.add(56)
-    # tree.add(70)
 
-    expected = ['56','99','128']
+    expected = [56, 99, 128]
     result = []
     result = tree.get_in_order_data() 
 
     assert result == expected
 
+def test_preorder_traversal():
+    tree = BinarySearchTree()
+    tree.add(99)
+    tree.add(128)
+    tree.add(56)
 
+    expected = [99, 56, 128]
+    result = []
+    result = tree.get_pre_order_data() 
+
+    assert result == expected
+
+def test_postorder_traversal():
+    tree = BinarySearchTree()
+    tree.add(99)
+    tree.add(128)
+    tree.add(56)
+
+    expected = [56, 128, 99]
+    result = []
+    result = tree.get_post_order_data() 
+
+    assert result == expected
