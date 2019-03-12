@@ -29,7 +29,7 @@ def FizzBuzzTree(binary_tree):
     if binary_tree._right_child != None:
         self.FizzBuzzTree(binary_tree._right_child)
 
-    return 
+    return binary_tree
 
 
 if __init__ == '__main__':
@@ -41,4 +41,5 @@ if __init__ == '__main__':
     # binary_search_tree.add(27)
     # binary_search_tree.add(182)
 
-    FizzBuzzTree(binary_search_tree)
+    new_binary_search_tree = BinaryTree()
+    new_binary_search_tree = FizzBuzzTree(binary_search_tree)
