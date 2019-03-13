@@ -33,7 +33,9 @@ class BinaryTree():
         self.root_node = None
         self.sort_list = []
 
-    def breadth_first_traversal(self, binary_tree):
+    def breadth_first_traversal(self, current_node):
+    # def breadth_first_traversal(self, binary_tree):
+
         """
         Summary of breadth_first_traversal method: returns an array of the value following the pre order which is node, left, right.
 
@@ -47,12 +49,17 @@ class BinaryTree():
         queue = Queue()
         output = ''
 
-        if binary_tree.root_node is None:
+        if self.root_node is None:
             return output
 
-        queue.enqueue(binary_tree.root_node)
-        temp = Node()
-        current = Node()
+        if current_node is None:
+            current_node = bst.binary_tree.root_node
+
+        self.binary_tree.root_node
+
+        queue.enqueue(self.root_node)
+        # temp = Node()
+        # current = Node()
 
         while queue.peek():
             current = queue.dequeue()
@@ -211,6 +218,19 @@ class BinarySearchTree():
             return self.contains(value, parent_node._left_child)
 
         return False
+
+    def get_breadth_order_data(self):
+        """
+        Summary of get_in_order_data method: returns an array of the value following the in order which is left, right, node
+
+        Parameters:
+        self (): which is the current binary
+
+        Returns:
+        An array that is ordered via post order.
+        """
+        self.binary_tree.sort_list = []
+        return self.binary_tree.breadth_first_traversal(self.binary_tree.root_node)
 
     def get_pre_order_data(self):
         """
