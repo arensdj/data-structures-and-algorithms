@@ -1,3 +1,5 @@
+from stacks_and_queues import Queue
+
 class Node():
     """
     Summary of Node class:  Class definition of a node which is an individual item. Each node contains the data for each item.
@@ -30,6 +32,44 @@ class BinaryTree():
     def __init__(self):
         self.root_node = None
         self.sort_list = []
+
+    def breadth_first_traversal(self, binary_tree):
+        """
+        Summary of breadth_first_traversal method: returns an array of the value following the pre order which is node, left, right.
+
+        Parameters:
+        self (): which is the current binary tree object
+         
+
+        Returns:
+        An string that contains values of binary tree in breadth first order.
+        """
+        queue = Queue()
+        output = ''
+
+        if binary_tree.root_node is None:
+            return output
+
+        queue.enqueue(binary_tree.root_node)
+        temp = Node()
+        current = Node()
+
+        while queue.peek():
+            current = queue.dequeue()
+
+            if current._left_child:
+                queue.enqueue(current._left_child)
+
+            if current._right_child:
+                queue.enqueue(current._right_child)
+
+            temp = queue.dequeue()
+
+            output += temp.value
+
+        return output
+
+
 
     def pre_order(self, node):
         """
@@ -126,7 +166,7 @@ class BinarySearchTree():
 
     def _addNode(self, parent_node, new_node):
         """
-        Summary of _addNode method: returns an array of the value following the in order which is left, right, node
+        Summary of _addNode method: returns an array of the value following the pre order which is left, right, node
 
         Parameters:
         self (): which is the current binary
@@ -146,11 +186,11 @@ class BinarySearchTree():
             if parent_node._right_child is None:
                 parent_node._right_child = new_node
             else:
-                self.add(parent_node._right_child, new_node)
+                self._addNode(parent_node._right_child, new_node)
 
     def contains(self, value, parent_node=None):
         """
-        Summary of contains method: returns an array of the value following the in order which is left, right, node
+        Summary of contains method: 
 
         Parameters:
         self (): which is the current binary
