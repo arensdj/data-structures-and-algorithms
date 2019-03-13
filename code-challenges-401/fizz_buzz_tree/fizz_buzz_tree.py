@@ -1,45 +1,39 @@
-from tree import Node, BinaryTree, BinaySearchTree
+from tree import BinarySearchTree
 
 
-def FizzBuzzTree(binary_tree):
+def FizzBuzzTree(current_node, bst):
     # navigate the tree in preorder traversal
-
-    if binary_tree.root_node is None:
-        return
     
-    if binary_tree._left_child and binary_tree._right_child:
-        if binary_tree._left_child.value % 5 and binary_tree._right_child.value % 3:
-            binary_tree._left_child.value = 'FizzBuzz'
-            binary_tree._right_child.value = 'FizzBuzz'
-    elif binary_tree._left_child:
-        if binary_tree._left_child.value % 3:
-            binary_tree._left_child.value = 'Fizz'
-        elif binary_tree._left_child.value % 5:
-            binary_tree._left_child.value = 'Buzz'
-    elif binary_tree._right_child:
-        if binary_tree._right_child.value % 3:
-            binary_tree._right_child.value = 'Fizz'
-        elif binary_tree._right_child.value % 5:
-            binary_tree._left_child.value = 'Buzz'
+    fizz_buzz_tree = BinarySearchTree()
 
+    if current_node is None:
+        current_node = bst.binary_tree.root_node
+    
+    current_node.value = set_fizz_buzz(current_node.value)
 
-    if binary_tree._left_child != None:
-        self.FizzBuzzTree(binary_tree._left_child)
+    if current_node._left_child != None:
+        FizzBuzzTree(current_node._left_child, bst)
 
-    if binary_tree._right_child != None:
-        self.FizzBuzzTree(binary_tree._right_child)
+    if current_node._right_child != None:
+        FizzBuzzTree(current_node._right_child, bst)
 
-    return binary_tree
+    fizz_buzz_tree = bst
+    return fizz_buzz_tree
 
+def set_fizz_buzz(node_value):
+    if node_value % 5 == 0 and node_value % 3 == 0:
+        return 'FizzBuzz'
+    elif node_value % 3 == 0:
+        return 'Fizz'
+    elif node_value % 5 == 0:
+        return 'Buzz'
+    else:
+        return node_value
 
-if __init__ == '__main__':
-    binary_search_tree = BinarySearchTree()
-    binary_search_tree.add(24)
-    binary_search_tree.add(5)
-    binary_search_tree.add(3)
-    # binary_search_tree.add(10)
-    # binary_search_tree.add(27)
-    # binary_search_tree.add(182)
+if __name__ == "__main__":
+    bst = BinarySearchTree()
+    bst.add(30)
+    bst.add(5)
+    bst.add(3)
 
-    new_binary_search_tree = BinaryTree()
-    new_binary_search_tree = FizzBuzzTree(binary_search_tree)
+    new_bst = FizzBuzzTree(None, bst)
