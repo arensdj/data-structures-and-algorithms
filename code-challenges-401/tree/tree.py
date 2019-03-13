@@ -1,3 +1,5 @@
+from stacks_and_queues import Queue
+
 class Node():
     """
     Summary of Node class:  Class definition of a node which is an individual item. Each node contains the data for each item.
@@ -30,6 +32,51 @@ class BinaryTree():
     def __init__(self):
         self.root_node = None
         self.sort_list = []
+
+    def breadth_first_traversal(self, current_node):
+    # def breadth_first_traversal(self, binary_tree):
+
+        """
+        Summary of breadth_first_traversal method: returns an array of the value following the pre order which is node, left, right.
+
+        Parameters:
+        self (): which is the current binary tree object
+         
+
+        Returns:
+        An string that contains values of binary tree in breadth first order.
+        """
+        queue = Queue()
+        output = ''
+
+        if self.root_node is None:
+            return output
+
+        if current_node is None:
+            current_node = bst.binary_tree.root_node
+
+        self.binary_tree.root_node
+
+        queue.enqueue(self.root_node)
+        # temp = Node()
+        # current = Node()
+
+        while queue.peek():
+            current = queue.dequeue()
+
+            if current._left_child:
+                queue.enqueue(current._left_child)
+
+            if current._right_child:
+                queue.enqueue(current._right_child)
+
+            temp = queue.dequeue()
+
+            output += temp.value
+
+        return output
+
+
 
     def pre_order(self, node):
         """
@@ -150,7 +197,7 @@ class BinarySearchTree():
             if parent_node._right_child is None:
                 parent_node._right_child = new_node
             else:
-                self.add(parent_node._right_child, new_node)
+                self._addNode(parent_node._right_child, new_node)
 
     def contains(self, value, parent_node=None):
         """
@@ -175,6 +222,19 @@ class BinarySearchTree():
             return self.contains(value, parent_node._left_child)
 
         return False
+
+    def get_breadth_order_data(self):
+        """
+        Summary of get_in_order_data method: returns an array of the value following the in order which is left, right, node
+
+        Parameters:
+        self (): which is the current binary
+
+        Returns:
+        An array that is ordered via post order.
+        """
+        self.binary_tree.sort_list = []
+        return self.binary_tree.breadth_first_traversal(self.binary_tree.root_node)
 
     def get_pre_order_data(self):
         """
