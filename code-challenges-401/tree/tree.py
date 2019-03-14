@@ -19,15 +19,15 @@ class Node():
 
 class BinaryTree():
     """
-    Summary of BinaryTree class:  Class definition of a node which is an individual item. Each node contains the data for each item.
+    Summary of BinaryTree class:  Class definition of a binary tree data structure in which each
+    node has at most two child nodes which are referred to as the left child and the right child.
 
     Attributes:
-    value (string) : a string value
-    _left_node : a property of Node class that will reference the next Node object to the left of the root node.
-    _right_node : a property of Node class that will reference the next Node object to the right of the root node.
+    self.root_node : the top node in a binary tree
+    self.sort_list : an array that will contain the traversal order of binary tree
 
     Returns:
-    A new instance of a Node class.
+    An instance of a binary tree
     """
     def __init__(self):
         self.root_node = None
@@ -67,14 +67,14 @@ class BinaryTree():
 
     def pre_order(self, node):
         """
-        Summary of pre_order method: returns an array of the value following the pre order which is node, left, right.
+        Summary of pre_order method: returns an array of node values following the pre order which is node, left, right.
 
         Parameters:
         self (): which is the current binary tree object
-        node 
+        node : the root node
 
         Returns:
-        An array that is ordered via pre order.
+        An array containing node values ordered via pre order.
         """
         self.sort_list.append(node.value)
 
@@ -88,13 +88,14 @@ class BinaryTree():
 
     def in_order(self, node):
         """
-        Summary of in_order method: returns an array of the value following the in order which is left, node, right
+        Summary of in_order method: returns an array of node values following the in order which is left, node, right
 
         Parameters:
         self (): which is the current binary tree
+        node : the root node
 
         Returns:
-        An array that is ordered via in order.
+        An array containing node values ordered via in order.
         """
 
         if node._left_child is not None:
@@ -109,13 +110,14 @@ class BinaryTree():
 
     def post_order(self, node):
         """
-        Summary of post_order method: returns an array of the value following the in order which is left, right, node
+        Summary of post_order method: returns an array of node value following the in order which is left, right, node
 
         Parameters:
         self (): which is the current binary
+        node : the root node
 
         Returns:
-        An array that is ordered via post order.
+        An array containing node values ordered via post order.
         """
         if node._left_child is not None:
             self.post_order(node._left_child)
@@ -143,13 +145,13 @@ class BinarySearchTree():
 
     def add(self, new_value):
         """
-        Summary of add method: returns an array of the value following the in order which is left, right, node
+        Summary of add method: adds a new node value in the correct location in the binary search tree.
 
         Parameters:
-        self (): which is the current binary
+        self () : which is the current binary tree
+        new_value : string value to add
 
         Returns:
-        An array that is ordered via post order.
         """
         new_node = Node(new_value)
 
@@ -160,10 +162,12 @@ class BinarySearchTree():
 
     def _addNode(self, parent_node, new_node):
         """
-        Summary of _addNode method: returns an array of the value following the pre order which is left, right, node
+        Summary of _addNode method: adds a new node value in the correct location in the binary search tree.
 
         Parameters:
-        self (): which is the current binary
+        self () : which is the current binary tree
+        parent_node : the root node
+        new_value : string value to add
 
         Returns:
         An array that is ordered via post order.
@@ -184,13 +188,13 @@ class BinarySearchTree():
 
     def contains(self, value, parent_node=None):
         """
-        Summary of contains method: 
+        Summary of contains method:  accepts a value and returns a boolean indicating whether or not the value is in the tree at least once.
 
         Parameters:
         self (): which is the current binary
 
         Returns:
-        An array that is ordered via post order.
+        A boolean value
         """
         if parent_node is None:
             parent_node = self.binary_tree.root_node
