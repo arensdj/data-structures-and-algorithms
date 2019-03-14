@@ -17,8 +17,7 @@ class Node():
 
 class BinaryTree():
     """
-    Summary of BinaryTree class:  Class definition of a binary tree data structure in which each
-    node has at most two child nodes which are referred to as the left child and the right child.
+    Summary of BinaryTree class:  Class definition of a binary tree data structure in which each node has at most two child nodes which are referred to as the left child and the right child.
 
     Attributes:
     self.root_node : the top node in a binary tree
@@ -33,7 +32,7 @@ class BinaryTree():
 
     def pre_order(self, node):
         """
-        Summary of pre_order method: returns an array of node values following the pre order which is node, left, right.
+        Summary of pre_order method: returns an array of node values following the pre order which is node, left, right.  This is done recursively.
 
         Parameters:
         self (): which is the current binary tree object
@@ -54,7 +53,7 @@ class BinaryTree():
 
     def in_order(self, node):
         """
-        Summary of in_order method: returns an array of node values following the in order which is left, node, right
+        Summary of in_order method: returns an array of node values following the in order which is left, node, right.  This is done recursively.
 
         Parameters:
         self (): which is the current binary tree
@@ -76,7 +75,7 @@ class BinaryTree():
 
     def post_order(self, node):
         """
-        Summary of post_order method: returns an array of node value following the in order which is left, right, node
+        Summary of post_order method: returns an array of node value following the in order which is left, right, node.  This is done recursively.
 
         Parameters:
         self (): which is the current binary
