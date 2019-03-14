@@ -64,6 +64,40 @@ class BinaryTree():
         # print(str(self.sort_list))
         return self.sort_list
 
+    def find_maximum_value(self, node=None):
+        """
+        Summary of find-maximum-value method:  return the maximum value stored in the tree. 
+
+        Parameters:
+        self (): which is the current binary tree object
+        node : the root node
+
+        Returns:
+        A string containing the maximum value
+        """
+        if self.root_node is None:
+            return None
+        
+        node = root_value = self.root_node
+
+        while node._left_child != None:
+            node = node._left_child
+        left_max = node.value
+
+        node = root_value
+        while node._right_child != None:
+            node = node._right_child
+        right_max = node.value
+
+        if left_max > root_value.value:
+            root_value.value = left_max
+        
+        if right_max > root_value.value:
+            root_value.value = right_max
+    
+        # print('Result: ' + str(root_value.value))
+        return root_value.value
+
     def pre_order(self, node):
         """
         Summary of pre_order method: returns an array of node values following the pre order which is node, left, right.  This is done recursively.
@@ -71,7 +105,7 @@ class BinaryTree():
         Parameters:
         self (): which is the current binary tree object
         node : the root node
-
+        
         Returns:
         An array containing node values ordered via pre order.
         """
@@ -264,19 +298,35 @@ class BinarySearchTree():
         return self.binary_tree.in_order(self.binary_tree.root_node)
 
 if __name__ == "__main__":
-    binary_search_tree = BinarySearchTree()
+    bst = BinarySearchTree()
+    bst.add(12)
+    bst.add(17)
+    bst.add(5)
+    bst.add(2)
+    bst.add(6)
+    # bst.add(9)
+    # bst.add(7)
+    # bst.add(11)
+    # bst.add(4)
 
-    binary_search_tree.add(5)
-    binary_search_tree.add(3)
-    binary_search_tree.add(10)
+    # expected = 11
 
-    array_pre_order = []
-    array_pre_order = binary_search_tree.get_pre_order_data()
+    result = bst.binary_tree.find_maximum_value()
 
-    array_post_order = []
-    array_post_order = binary_search_tree.get_post_order_data()
 
-    array_in_order = []
-    array_in_order = binary_search_tree.get_in_order_data()
-
-    print((array_pre_order))
+    # binary_search_tree = BinarySearchTree()
+    #
+    # binary_search_tree.add(5)
+    # binary_search_tree.add(3)
+    # binary_search_tree.add(10)
+    #
+    # array_pre_order = []
+    # array_pre_order = binary_search_tree.get_pre_order_data()
+    #
+    # array_post_order = []
+    # array_post_order = binary_search_tree.get_post_order_data()
+    #
+    # array_in_order = []
+    # array_in_order = binary_search_tree.get_in_order_data()
+    #
+    # print((array_pre_order))

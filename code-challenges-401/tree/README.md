@@ -20,7 +20,6 @@
 ## API
 # None
 
-
 # Breadth-first
 # Write a breadth first traversal method which takes a Binary Tree as its unique input. 
 # Without utilizing any of the built-in methods available to your language, traverse the 
@@ -34,5 +33,17 @@
 # adding each left child and right child.  But needed to capture each node by dequeueing
 # it and accessing the node value and adding it to an array before adding another tree
 # node into the queue.
+
+## find_maximum_value
+<!-- Embedded whiteboard image -->
+
+# Find the Maximum Value in a Binary Tree
+<!-- Short summary or background information -->
+
+## Challenge
+<!-- Description of the challenge -->
+
+## Approach & Efficiency
+<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
 ## Solution
