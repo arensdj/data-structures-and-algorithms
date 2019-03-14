@@ -266,7 +266,7 @@ class LinkedList():
         if self.head == self.tail:
             self.head = None
             self.tail = None
-            return None
+            return temp.value
         else:
             while current._next != self.tail:
                 current = current._next
@@ -295,8 +295,6 @@ class LinkedList():
 
             return temp.value
         else:
-            # self.head.value = ''
-
             return self.head
 
 class Node():

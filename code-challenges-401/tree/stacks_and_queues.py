@@ -15,6 +15,23 @@ class Node():
         self.value = value
         self._next = None
 
+# class Node_QD():
+#     """
+#     Summary of Node_QD class:  Class definition of a node which is an individual item contained in a queue. Each node contains the data for each item.
+
+#     Attributes:
+#     value (string): a string value
+#     _left_node : a property of Node class that will reference the next Node object to the left of the root node.
+#     _right_node : a property of Node class that will reference the next Node object to the right of the root node.
+   
+#     Returns:
+#     A new instance of a Node class.
+#     """    
+#     def __init__(self, value):
+#         self.value = value
+#         self._left_child = None
+#         self._right_child = None
+
 class Queue():    # this is composition.  Not extending LinkedList but using its behavior
     """
     Summary of Queue class:  A queue is a data structure that consists of Nodes. Each Node references the next node in 
@@ -46,9 +63,10 @@ class Queue():    # this is composition.  Not extending LinkedList but using its
         Nothing
         """
         try:
-            self._list.remove_from_list_end()
+            node = self._list.remove_from_list_end()
             self.front = self._list.tail
             self.rear = self._list.head
+            return node
         except:   # NullReferenceException:
             print('Queue is empty')
 

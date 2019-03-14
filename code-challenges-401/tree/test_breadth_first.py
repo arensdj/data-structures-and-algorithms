@@ -27,15 +27,13 @@ def test_breadth_order_traversal():
     tree.add(30)
     tree.add(45)
 
-    expected = [25, 15, 8, 19, 35, 30, 45]
+    expected = [25, 15, 35, 8, 19, 30, 45]
 
-    # result = []
-    # result = tree.get_pre_order_data() 
+    result = []
+    # result = tree.binary_tree.breadth_first_traversal(None)
+    result = tree.get_breadth_order_data()
 
-    result2 = []
-    result2 = tree.binary_tree.breadth_first_traversal(None)
-
-#     assert result == expected
+    assert result == expected
 
 
 # def test_preorder_traversal():
