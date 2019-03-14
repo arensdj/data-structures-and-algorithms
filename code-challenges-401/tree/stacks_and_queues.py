@@ -46,9 +46,10 @@ class Queue():    # this is composition.  Not extending LinkedList but using its
         Nothing
         """
         try:
-            self._list.remove_from_list_end()
+            node = self._list.remove_from_list_end()
             self.front = self._list.tail
             self.rear = self._list.head
+            return node
         except:   # NullReferenceException:
             print('Queue is empty')
 

@@ -34,49 +34,36 @@ class BinaryTree():
         self.sort_list = []
 
     def breadth_first_traversal(self, current_node):
-    # def breadth_first_traversal(self, binary_tree):
-
         """
         Summary of breadth_first_traversal method: returns an array of the value following the pre order which is node, left, right.
 
         Parameters:
         self (): which is the current binary tree object
+        current_node : an input that has value of None
          
-
         Returns:
         An string that contains values of binary tree in breadth first order.
         """
         queue = Queue()
-        output = ''
 
         if self.root_node is None:
             return output
 
-        if current_node is None:
-            current_node = bst.binary_tree.root_node
-
-        self.binary_tree.root_node
-
         queue.enqueue(self.root_node)
-        # temp = Node()
-        # current = Node()
-
+        
         while queue.peek():
-            current = queue.dequeue()
+            current_node = queue.dequeue()
 
-            if current._left_child:
-                queue.enqueue(current._left_child)
+            if current_node._left_child:
+                queue.enqueue(current_node._left_child)
 
-            if current._right_child:
-                queue.enqueue(current._right_child)
+            if current_node._right_child:
+                queue.enqueue(current_node._right_child)
 
-            temp = queue.dequeue()
-
-            output += temp.value
-
-        return output
-
-
+            self.sort_list.append(current_node.value)
+        
+        # print(str(self.sort_list))
+        return self.sort_list
 
     def pre_order(self, node):
         """
@@ -234,7 +221,9 @@ class BinarySearchTree():
         An array that is ordered via post order.
         """
         self.binary_tree.sort_list = []
-        return self.binary_tree.breadth_first_traversal(self.binary_tree.root_node)
+        return self.binary_tree.breadth_first_traversal(None)
+        # return self.binary_tree.breadth_first_traversal(self.binary_tree.root_node, None)
+
 
     def get_pre_order_data(self):
         """
