@@ -1,45 +1,64 @@
-from tree import Node, BinaryTree, BinaySearchTree
+from tree import BinarySearchTree
 
 
-def FizzBuzzTree(binary_tree):
-    # navigate the tree in preorder traversal
+def FizzBuzzTree(current_node, bst):
+    """
+    Summary of FizzBuzzTree function: given a binary search tree argument determines
+    whether or not the value of each node is divisible by 3, 5 or both 3 and 5.
+    Changes the node value to 'FizzBuzz' if value is divisible by 3 and 5.
+    Changes the node value to 'Fizz' if the value is divisible by 3.
+    Changes the node value to 'Buzz' if the value is divisible by 5.
 
-    if binary_tree.root_node is None:
-        return
+    Parameters:
+    current_node : value is None
+    bst (BinarySearchTree): the current binary search tree
+
+    Returns:
+    A binary search tree with the new values.
+    """
+    fizz_buzz_tree = BinarySearchTree()
+
+    if current_node is None:
+        current_node = bst.binary_tree.root_node
     
-    if binary_tree._left_child and binary_tree._right_child:
-        if binary_tree._left_child.value % 5 and binary_tree._right_child.value % 3:
-            binary_tree._left_child.value = 'FizzBuzz'
-            binary_tree._right_child.value = 'FizzBuzz'
-    elif binary_tree._left_child:
-        if binary_tree._left_child.value % 3:
-            binary_tree._left_child.value = 'Fizz'
-        elif binary_tree._left_child.value % 5:
-            binary_tree._left_child.value = 'Buzz'
-    elif binary_tree._right_child:
-        if binary_tree._right_child.value % 3:
-            binary_tree._right_child.value = 'Fizz'
-        elif binary_tree._right_child.value % 5:
-            binary_tree._left_child.value = 'Buzz'
+    current_node.value = set_fizz_buzz(current_node.value)
 
+    if current_node._left_child != None:
+        FizzBuzzTree(current_node._left_child, bst)
 
-    if binary_tree._left_child != None:
-        self.FizzBuzzTree(binary_tree._left_child)
+    if current_node._right_child != None:
+        FizzBuzzTree(current_node._right_child, bst)
 
-    if binary_tree._right_child != None:
-        self.FizzBuzzTree(binary_tree._right_child)
+    fizz_buzz_tree = bst
+    return fizz_buzz_tree
 
-    return binary_tree
+def set_fizz_buzz(node_value):
+    """
+    Summary of set_fizz_buzz function: Evaluates the value of node_value and
+    returns either
+      'FizzBuzz' if value is divisible by 3 and 5.
+      'Fizz' if the value is divisible by 3.
+      'Buzz' if the value is divisible by 5.
 
+    Parameters:
+    node_value (Node) : the current node
 
-if __init__ == '__main__':
-    binary_search_tree = BinarySearchTree()
-    binary_search_tree.add(24)
-    binary_search_tree.add(5)
-    binary_search_tree.add(3)
-    # binary_search_tree.add(10)
-    # binary_search_tree.add(27)
-    # binary_search_tree.add(182)
+    Returns:
+    Either 'FizzBuzz', 'Fizz' or 'Buzz'
+    """
+    if node_value % 5 == 0 and node_value % 3 == 0:
+        return 'FizzBuzz'
+    elif node_value % 3 == 0:
+        return 'Fizz'
+    elif node_value % 5 == 0:
+        return 'Buzz'
+    else:
+        return node_value
 
-    new_binary_search_tree = BinaryTree()
-    new_binary_search_tree = FizzBuzzTree(binary_search_tree)
+if __name__ == "__main__":
+    bst = BinarySearchTree()
+    bst.add(30)
+    bst.add(5)
+    bst.add(33)
+
+    new_bst = FizzBuzzTree(None, bst)

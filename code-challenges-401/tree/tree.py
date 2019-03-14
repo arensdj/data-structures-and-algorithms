@@ -1,3 +1,5 @@
+from stacks_and_queues import Queue
+
 class Node():
     """
     Summary of Node class:  Class definition of a node which is an individual item. Each node contains the data for each item.
@@ -29,6 +31,38 @@ class BinaryTree():
     def __init__(self):
         self.root_node = None
         self.sort_list = []
+
+    def breadth_first_traversal(self, current_node):
+        """
+        Summary of breadth_first_traversal method: returns an array of the value following the pre order which is node, left, right.
+
+        Parameters:
+        self (): which is the current binary tree object
+        current_node : an input that has value of None
+         
+        Returns:
+        An string that contains values of binary tree in breadth first order.
+        """
+        queue = Queue()
+
+        if self.root_node is None:
+            return output
+
+        queue.enqueue(self.root_node)
+        
+        while queue.peek():
+            current_node = queue.dequeue()
+
+            if current_node._left_child:
+                queue.enqueue(current_node._left_child)
+
+            if current_node._right_child:
+                queue.enqueue(current_node._right_child)
+
+            self.sort_list.append(current_node.value)
+        
+        # print(str(self.sort_list))
+        return self.sort_list
 
     def pre_order(self, node):
         """
@@ -149,7 +183,7 @@ class BinarySearchTree():
             if parent_node._right_child is None:
                 parent_node._right_child = new_node
             else:
-                self.add(parent_node._right_child, new_node)
+                self._addNode(parent_node._right_child, new_node)
 
     def contains(self, value, parent_node=None):
         """
@@ -174,6 +208,21 @@ class BinarySearchTree():
             return self.contains(value, parent_node._left_child)
 
         return False
+
+    def get_breadth_order_data(self):
+        """
+        Summary of get_in_order_data method: returns an array of the value following the in order which is left, right, node
+
+        Parameters:
+        self (): which is the current binary
+
+        Returns:
+        An array that is ordered via post order.
+        """
+        self.binary_tree.sort_list = []
+        return self.binary_tree.breadth_first_traversal(None)
+        # return self.binary_tree.breadth_first_traversal(self.binary_tree.root_node, None)
+
 
     def get_pre_order_data(self):
         """
