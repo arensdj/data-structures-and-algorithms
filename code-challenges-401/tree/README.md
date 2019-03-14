@@ -34,16 +34,17 @@
 # it and accessing the node value and adding it to an array before adding another tree
 # node into the queue.
 
-## find_maximum_value
-<!-- Embedded whiteboard image -->
 
 # Find the Maximum Value in a Binary Tree
-<!-- Short summary or background information -->
+# This function takes binary tree as its only input. Without utilizing any of the built-in methods available to your language, returns the maximum value stored in the tree. It is assumed that the values stored in the Binary Tree will be numeric.
 
 ## Challenge
-<!-- Description of the challenge -->
+# Write a recursive routine that will search the left half and right half of binary 
+# tree searching for the max value and returning the max value.
 
 ## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+# Traverse each half of the binary tree searching for the max value of each half.
+# Compare the max value of the left half and right half to the root value and 
+# return the max value of the three values.
 
 ## Solution
